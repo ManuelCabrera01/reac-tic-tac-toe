@@ -61,6 +61,9 @@ class Game extends React.Component {
   }
 
   handleClick(i) {
+    if (this.state.stepNumber !== this.state.history.length - 1) {
+      return;
+    }
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
@@ -86,6 +89,20 @@ class Game extends React.Component {
     });
   }
 
+  resetGame() {}
+
+  ShowtheResetButton() {
+    if (this.state.stepNumber !== [this.state.history.length - 1].square) {
+      return;
+      <button
+        onClick={() => {
+          this.resetGame;
+        }}
+      >
+        reset Game
+      </button>;
+    }
+  }
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -110,6 +127,7 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
+          {this.ShowtheResetButton()}
           <Board squares={current.squares} onClick={i => this.handleClick(i)} />
         </div>
         <div className="game-info">
